@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title></title>
+  	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<link rel="stylesheet" href="/resources/demos/style.css">
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<script>
+  		$(function()
+  		{
+    		var availableTags = [
+      			"Rice", "Masoor Dal", "Moong Dal", "Arahar Dal","Rajma","Matar Dal","Chana Dal","Biriyani Rice",
+      			"Besan","Mustard Oil","Refined Oil","Coconut Oil","Cold Drinks","Milk","Chili Powder","Turmaric",
+      			"Black Paper","Chiken Masala","Meat Masala","Jeera","Methi","Clover","Cinamon","Soap","Face Wash",
+      			"Deodrent","Shower Gel","Shampoo","Moisturizer","Chips","Chocolate","Baby Food","Corn Flakes",
+      			"Biscuit","Tea","Coffee","Bhujia","Sauce","Toothpaste", "Atta", "Maida", "Soyabean",
+      			"Soyabean Oil", "Milk Powder"
+    		];
+    		function split( val )
+    		{
+      			return val.split( /,\s*/ );
+    		}
+    		function extractLast( term )
+    		{
+      			return split( term ).pop();
+    		}
+    		$( "#tags" )
+      		// don't navigate away from the field on tab when selecting an item
+      		.on( "keydown", function( event )
+      		{
+        		if( event.keyCode === $.ui.keyCode.TAB && $( this ).autocomplete( "instance" ).menu.active )
+        		{
+          			event.preventDefault();
+        		}
+      		})
+      		.autocomplete({ minLength: 0,
+        		source: function( request, response )
+        		{
+          			response( $.ui.autocomplete.filter(
+            		availableTags, extractLast( request.term ) ) );
+        		},
+        		focus: function()
+        		{
+          			return false;
+        		},
+        		select: function( event, ui )
+        		{
+          			var terms = split( this.value );
+          			terms.pop();
+          			terms.push( ui.item.value );
+          			terms.push( "" );
+          			this.value = terms.join( ", " );
+          			return false;
+        		}
+      		});
+  		});
+  		</script>
+	</head>
+<body>
+  <div>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <span>{{ message }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+	<div class="ui-widget">
+		<label for="tags">Enter Your Product</label><br>
+		<form name="search" action="." method="POST">
+			<input id="tags" type="text" name="productName">
+			<input type="submit" name="submit">
+			<a href="product_list"><button>End Query</button></a>
+		</form>
+	</div>
+	<h1>Query Product List</h1><br>
+	<table>
+		<thead>
+			<td>Product Name</td>
+			<td>Shelf No</td>
+		</thead>
+
+		{% for row in rows %}
+		<tr>
+		   <td>{{row["product_name"]}}</td>
+		   <td>{{row['shelf_no']}}</td>	
+		</tr>
+		{% endfor %}
+      </table>
+</body>
+</html>

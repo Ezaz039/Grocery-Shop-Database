@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <title></title>
+   <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+   <body>
+      <header class="navbar bg-light">
+      <a class="navbar-brand" href="/" style="display: block;">
+         <h2 style="font-family: 'Oxanium', !important;">SN</h2>
+      <p style="font-size: 12px; padding-left: 10px; margin-top: -13px;" >ShelfNavigator</p></a>
+   </header>
+      <table border = 1 class="table">
+         <thead>
+            <td>product_name</td>
+            <td>Uniliver</td>
+            <td>PG</td>
+            <td>ITC</td>
+            <td>Himalaya</td>
+            <td>Patanjali</td>
+         </thead>
+         {% for row in rows %}
+            <tr>
+               <td>{{row["product_name"]}}</td>
+               <td> {{ row["Uniliver"]}}</td>
+               <td> {{ row["PG"]}}</td>
+               <td> {{ row["ITC"]}}</td>
+               <td> {{ row["Himalaya"]}}</td>
+               <td> {{ row["Patanjali"]}}</td>	
+            </tr>
+         {% endfor %}
+      </table>
+       <div class="card w-50" style="margin: 0 auto; background-color: #e64e17; margin-top: 10vh; text-align: center; padding: 30px;">
+      <h4 class="card-title" style="font-size: 30px; font-weight: 300; text-align: center; margin-top: 30px; color: #fff">Product Weight</h4>
+      <h5 style="font-weight: 300; color: #fff;font-size: 18px;">Enter Your Choice<br>1. For Uniliver<br>2. For PG<br>3. ITC<br>4. For Himalaya<br>5. Patanjali<br></h5>
+     <input type="integer" name="product_weight" class="form-control" style="max-width: 230px; margin: 0 auto;margin-bottom: 10px;">
+      <a href="/productLocation/{{ query_product }}"><button class="btn btn-light" style="display: block; margin: 0 auto;">Submit</button></a>
+      <a href = "/" style="color: #eee">Go back to home page</a>
+   </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   </body>
+</html>
