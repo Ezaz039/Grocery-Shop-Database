@@ -1,4 +1,4 @@
-# Theme Name:
+# Retail Shop Management System:
 Build a solution to help the customers find products in the store and help them to navigate to the corresponding aisle /shelf. If there is a shopping list, provide the best shopping trip to complete the purchases.
 
 ## Solution Approach:
