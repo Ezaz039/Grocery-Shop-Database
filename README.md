@@ -15,3 +15,11 @@ Run 'pip3 install -r requirements.txt' in your terminal to install all the depen
 
 ### How to run the model?:
 After installation of 'requirements.txt' run 'python3 myapp.py' to initialize the model.
+
+### Some overview of my stock market prediction website:
+![GitHub Logo](home.png)
+![GitHub Logo](product.png)
+![GitHub Logo](query_list.png)
+
+# Usage:
+My Retail Shop Management system application is currently deployed on Heroku. The website can be accessed through https://retailstoredatabase.herokuapp.com/
